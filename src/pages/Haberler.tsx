@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Page } from '../types';
 import { getArticles } from '../services/api';
 
-type Category = 'Tümü' | 'Basın Bültenleri' | 'Etkinlikler' | 'Galeri' | 'Kültür & Sanat';
+type Category = 'Tümü' | 'Haberler' | 'Duyurular' | 'Makaleler' | 'Hikayeler';
 
 interface Article {
   id: string;
@@ -18,11 +18,11 @@ interface Article {
 
 
 
-interface BasinKulturSanatProps {
+interface HaberlerProps {
   currentPage: Page;
 }
 
-const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
+const Haberler: React.FC<HaberlerProps> = () => {
   const [activeTab, setActiveTab] = useState<Category>('Tümü');
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,10 +33,11 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
         const strapiData = await getArticles();
         const formattedArticles: Article[] = strapiData.map((item: any) => {
            // Map Strapi categories to Frontend categories
-           let category: any = 'Kültür & Sanat'; // Default
-           if (item.category === 'Basin') category = 'Basın Bültenleri';
-           if (item.category === 'Kultur') category = 'Kültür & Sanat';
-           if (item.category === 'Sanat') category = 'Galeri'; // Assuming Sanat maps to Galeri for now, or create new logic
+           let category: any = 'Haberler'; // Default
+           if (item.category === 'Duyurular') category = 'Duyurular';
+           if (item.category === 'Makaleler') category = 'Makaleler';
+           if (item.category === 'Hikayeler') category = 'Hikayeler';
+           if (item.category === 'Haberler') category = 'Haberler';
 
            // Handle Image URL
            const imageUrl = item.coverImage?.url 
@@ -72,7 +73,7 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
     return articles.filter(art => art.category === activeTab);
   }, [activeTab, articles]);
 
-  const categories: Category[] = ['Tümü', 'Basın Bültenleri', 'Etkinlikler', 'Galeri', 'Kültür & Sanat'];
+  const categories: Category[] = ['Tümü', 'Haberler', 'Duyurular', 'Makaleler', 'Hikayeler'];
 
   const navigateToArticle = (slug: string) => {
     window.location.hash = `article/${slug}`;
@@ -97,10 +98,10 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
             <span>Haberler & Kültür</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 leading-tight">
-            Basın & Kültür-Sanat
+            Haberler & İçerikler
           </h1>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
-            Mücadelemizi sözle, renkle ve sesle duyuruyoruz. Etkinliklerimizi ve galerimizi buradan takip edebilirsiniz.
+            Vakfımızdan en son gelişmeleri, güncel duyuruları ve ilham verici makaleleri buradan takip edebilirsiniz.
           </p>
         </div>
 
@@ -122,16 +123,16 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
         </div>
 
         {/* Content Grid */}
-        <div className={`grid grid-cols-1 ${activeTab === 'Galeri' ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-2 lg:grid-cols-3'} gap-10`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10`}>
           {filteredArticles.length > 0 ? (
             filteredArticles.map((article) => (
               <div 
                 key={article.id} 
-                className={`group flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-brand-purple-900/10 border border-brand-purple-50/50 transition-all duration-500 hover:-translate-y-2 cursor-pointer ${activeTab === 'Galeri' ? 'aspect-[4/5]' : 'min-h-[500px]'}`}
+                className={`group flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-brand-purple-900/10 border border-brand-purple-50/50 transition-all duration-500 hover:-translate-y-2 cursor-pointer min-h-[500px]`}
                 onClick={() => navigateToArticle(article.slug)} // Added onClick handler
               >
                 {/* Image */}
-                <div className={`relative ${activeTab === 'Galeri' ? 'h-full' : 'h-64'} overflow-hidden`}>
+                <div className={`relative h-64 overflow-hidden`}>
                   <img 
                     src={article.imageUrl} 
                     alt={article.title} 
@@ -142,41 +143,32 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
                       {article.category}
                     </span>
                   </div>
-
-                  {activeTab === 'Galeri' && (
-                    <div className="absolute inset-0 bg-brand-purple-900/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center text-white">
-                      <h4 className="font-serif font-bold text-lg mb-2">{article.title}</h4>
-                      <p className="text-[10px] uppercase tracking-widest opacity-70">{article.date}</p>
-                    </div>
-                  )}
                 </div>
 
-                {/* Text Info (Only for non-Gallery) */}
-                {activeTab !== 'Galeri' && (
-                  <div className="p-8 flex flex-col flex-1">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-brand-green-500 font-bold text-xs uppercase tracking-widest">{article.date}</span>
-                      {article.location && (
-                        <span className="text-[10px] text-gray-400 font-bold uppercase flex items-center">
-                          <svg className="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
-                          {article.location}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-2xl font-serif font-bold text-brand-purple-900 mb-4 leading-tight group-hover:text-brand-purple-600 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-8 font-light">
-                      {article.excerpt}
-                    </p>
-                    <div className="pt-6 border-t border-gray-100 mt-auto">
-                      <button className="text-brand-purple-900 font-bold text-xs uppercase tracking-widest flex items-center group-hover:text-brand-green-500 transition-colors">
-                        Devamını Oku
-                        <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                      </button>
-                    </div>
+                {/* Text Info */}
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-brand-green-500 font-bold text-xs uppercase tracking-widest">{article.date}</span>
+                    {article.location && (
+                      <span className="text-[10px] text-gray-400 font-bold uppercase flex items-center">
+                        <svg className="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                        {article.location}
+                      </span>
+                    )}
                   </div>
-                )}
+                  <h3 className="text-2xl font-serif font-bold text-brand-purple-900 mb-4 leading-tight group-hover:text-brand-purple-600 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-8 font-light">
+                    {article.excerpt}
+                  </p>
+                  <div className="pt-6 border-t border-gray-100 mt-auto">
+                    <button className="text-brand-purple-900 font-bold text-xs uppercase tracking-widest flex items-center group-hover:text-brand-green-500 transition-colors">
+                      Devamını Oku
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                  </div>
+                </div>
               </div>
             ))
           ) : (
@@ -190,4 +182,4 @@ const BasinKulturSanat: React.FC<BasinKulturSanatProps> = () => {
   );
 };
 
-export default BasinKulturSanat;
+export default Haberler;

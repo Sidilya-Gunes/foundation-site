@@ -35,18 +35,16 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
       try {
         const [articlesData, reportsData] = await Promise.all([getArticles(), getReports()]);
         
-        // 1. Latest News (excluding KadininKalemi if we want, or just generic latest)
-        // Let's filter out KadininKalemi for the main news section to avoid duplication if desired, 
-        // OR just show everything except 'KadininKalemi' category for "Gündemden Haberler"
+        // 1. Latest News (Haberler and Duyurular)
         const newsItems = articlesData
-          .filter((item: any) => item.category !== 'KadininKalemi') // Optional: separate them
+          .filter((item: any) => item.category !== 'Makaleler' && item.category !== 'Hikayeler') 
           .slice(0, 3)
           .map((item: any) => formatArticle(item));
         setLatestNews(newsItems);
 
-        // 2. Kadinin Kalemi (Latest 4)
+        // 2. Makaleler ve Hikayeler (Latest 4)
         const kalemItems = articlesData
-          .filter((item: any) => item.category === 'KadininKalemi')
+          .filter((item: any) => item.category === 'Makaleler' || item.category === 'Hikayeler')
           .slice(0, 4)
           .map((item: any) => formatArticle(item));
         setKalemArticles(kalemItems);
@@ -71,10 +69,7 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
   }, []);
 
   const formatArticle = (item: any): NewsItem => {
-    let category: any = 'Kültür-Sanat';
-    if (item.category === 'Basin') category = 'Basın Bülteni';
-    if (item.category === 'Kultur') category = 'Kültür-Sanat';
-    if (item.category === 'KadininKalemi') category = 'Kadının Kalemi';
+    let category: any = item.category || 'Belirtilmemiş';
     
     const imageUrl = item.coverImage?.url 
       ? `http://localhost:1337${item.coverImage.url}` 
@@ -101,7 +96,7 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
   return (
     <div className="animate-in fade-in duration-1000">
       {/* 1. Hero Section - Left Text / Right Image (Warmer Look) */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-brand-neutral-bg rounded-b-[3rem] shadow-sm z-10">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-brand-neutral-bg via-[#e0f2fe] to-[#0ea5e9] rounded-b-[3rem] shadow-sm z-10">
         {/* Soft Background Gradients */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-purple-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-green-50/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 z-0"></div>
@@ -178,7 +173,7 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
               <p className="text-gray-500 mt-2">Vakıftan en son gelişmeler ve etkinlikler.</p>
             </div>
             <button 
-              onClick={() => setPage('basin')} 
+              onClick={() => setPage('haberler')} 
               className="text-brand-purple-600 font-bold hover:text-brand-purple-800 transition-colors flex items-center text-sm"
             >
               Tümünü İncele &rarr;
@@ -224,8 +219,8 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
                <h2 className="text-4xl font-serif font-bold text-brand-purple-900 leading-tight">Blog & Makaleler</h2>
                <p className="text-gray-600 mt-4 text-lg">Alanında uzman isimlerden derinlemesine analizler ve öngörüler.</p>
             </div>
-             <button onClick={() => setPage('kalem')} className="hidden md:block text-brand-purple-700 font-bold hover:bg-brand-purple-100 px-6 py-3 rounded-lg transition-colors">
-                Tüm Yazıları Gör &rarr;
+             <button onClick={() => setPage('hikayeler')} className="hidden md:block text-brand-purple-700 font-bold hover:bg-brand-purple-100 px-6 py-3 rounded-lg transition-colors">
+                Hikayelerin Tümü &rarr;
               </button>
           </div>
 
@@ -271,8 +266,8 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
                   </div>
                 </div>
               ))}
-              <button onClick={() => setPage('kalem')} className="md:hidden w-full py-3 mt-4 text-brand-purple-700 font-bold bg-white border border-brand-purple-200 rounded-lg">
-                Tüm Yazıları Gör
+              <button onClick={() => setPage('hikayeler')} className="md:hidden w-full py-3 mt-4 text-brand-purple-700 font-bold bg-white border border-brand-purple-200 rounded-lg">
+                Hikayelerin Tümü
               </button>
             </div>
           </div>

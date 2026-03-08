@@ -12,7 +12,7 @@ interface Article {
   publishedDate: string;
 }
 
-const KadininKalemi: React.FC = () => {
+const Hikayeler: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,7 @@ const KadininKalemi: React.FC = () => {
         // Actually, let's use the new query feature we added or just client filter.
         // Since we didn't add category filter to getArticles (only generic query), client filter is safest for now.
         const filtered = allArticles
-          .filter((a: any) => a.category === 'KadininKalemi')
+          .filter((a: any) => a.category === 'Hikayeler' || a.category === 'Makaleler')
           .map((item: any) => ({
             id: item.documentId || item.id,
             title: item.title,
@@ -77,9 +77,9 @@ const KadininKalemi: React.FC = () => {
         
         {/* Page Header */}
         <div className="text-center mb-20 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-purple-900 italic tracking-tight">Kadının Kalemi</h1>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-purple-900 italic tracking-tight">Bizim Hikayelerimiz</h1>
           <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Kadınların hikayeleri, mücadeleleri ve başarıları üzerine samimi bir köşe. Her kelime bir güç, her hikaye bir dayanışma.
+            Gönüllülerimizin hikayeleri, ilham veren yazılar ve mücadelemiz üzerine samimi bir köşe. Her kelime bir güç, her hikaye bir dayanışma.
           </p>
           <div className="w-24 h-1 bg-brand-yellow-400 mx-auto mt-8"></div>
         </div>
@@ -110,7 +110,7 @@ const KadininKalemi: React.FC = () => {
               
               <div className="flex items-center space-x-4 border-t border-gray-100 pt-8 mt-auto">
                 <div>
-                  <h4 className="font-bold text-brand-purple-900">Wsn Dayanışma</h4>
+                  <h4 className="font-bold text-brand-purple-900">OpenHeart Gönüllüsü</h4>
                   <p className="text-xs text-gray-400">Yazar</p>
                 </div>
                 <button 
@@ -149,7 +149,7 @@ const KadininKalemi: React.FC = () => {
                   <div className="flex items-center space-x-3 text-xs text-gray-400 font-medium">
                     <span>{story.publishedDate}</span>
                     <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                    <span className="text-brand-purple-500">Wsn Dayanışma</span>
+                    <span className="text-brand-purple-500">Gönüllü Yazar</span>
                   </div>
                   
                   <h4 className="text-2xl font-serif font-bold text-brand-purple-900 group-hover:text-brand-purple-600 transition-colors leading-tight">
@@ -190,4 +190,4 @@ const KadininKalemi: React.FC = () => {
   );
 };
 
-export default KadininKalemi;
+export default Hikayeler;
