@@ -36,10 +36,10 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "Basin",
-        "Kultur",
-        "Sanat",
-        "KadininKalemi"
+        "Haberler",
+        "Duyurular",
+        "Makaleler",
+        "Hikayeler"
       ]
     },
     "publishedDate": {
