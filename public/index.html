@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>OpenHeart Foundation</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                purple: {
+                  50: "#f0f9ff", // Sky 50
+                  100: "#e0f2fe", // Sky 100
+                  500: "#0ea5e9", // Sky 500 (Primary Blue)
+                  600: "#0284c7", // Sky 600
+                  700: "#0369a1", // Sky 700
+                  900: "#0c4a6e", // Sky 900
+                },
+                green: {
+                  50: "#f0fdf4",
+                  500: "#14b8a6", // Teal 500 (Secondary)
+                  700: "#0f766e", // Teal 700
+                },
+                yellow: {
+                  400: "#fbbf24", // Amber 400 (Accent)
+                  500: "#f59e0b",
+                },
+                neutral: {
+                  bg: "#f8fafc", // Slate 50
+                  text: "#0f172a", // Slate 900
+                },
+              },
+            },
+            fontFamily: {
+              serif: ['"Outfit"', "sans-serif"], // Changed to Outfit for modern look
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        background-color: #f8fafc;
+        color: #0f172a;
+        font-family: "Inter", sans-serif;
+      }
+
+      .font-serif {
+        font-family: "Outfit", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+      }
+
+      .soft-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(14, 165, 233, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
