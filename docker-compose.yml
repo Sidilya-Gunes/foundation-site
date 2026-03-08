@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: foundation-backend
+    container_name: foundation-backend
+    restart: unless-stopped
+    env_file: ./server/.env
+    environment:
+      - NODE_ENV=production
+      - DATABASE_CLIENT=sqlite
+      - DATABASE_FILENAME=.tmp/data.db
+    volumes:
+      - ./server/.tmp:/app/.tmp
+      - ./server/public/uploads:/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - foundation-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: foundation-frontend
+    container_name: foundation-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - foundation-network
+
+networks:
+  foundation-network:
+    driver: bridge
