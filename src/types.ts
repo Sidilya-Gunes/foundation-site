@@ -21,11 +21,8 @@ export interface Program {
 export type Page = 
   | 'home' 
   | 'biz-kimiz' 
-  | 'basin' 
-  | 'basin-bultenleri'
-  | 'etkinlikler'
-  | 'galeri'
-  | 'kalem' 
+  | 'haberler' 
+  | 'hikayeler' 
   | 'raporlar' 
   | 'iletisim' 
   | 'programs';

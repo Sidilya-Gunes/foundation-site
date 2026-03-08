@@ -4,8 +4,8 @@ import { NavLink } from './types';
 
 export const NAV_LINKS: NavLink[] = [
   { id: 'biz-kimiz', label: 'Hakkımızda' },
-  { id: 'basin', label: 'Haberler' },
-  { id: 'kalem', label: 'Blog & Makaleler' },
+  { id: 'haberler', label: 'Haberler & Duyurular' },
+  { id: 'hikayeler', label: 'Hikayeler & Makaleler' },
   { id: 'raporlar', label: 'Raporlar' },
   { id: 'iletisim', label: 'İletişim' },
 ];

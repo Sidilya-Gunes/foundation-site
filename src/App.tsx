@@ -7,8 +7,8 @@ import About from './pages/About';
 import Programs from './pages/Programs';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
-import BasinKulturSanat from './pages/BasinKulturSanat';
-import KadininKalemi from './pages/KadininKalemi';
+import Haberler from './pages/Haberler';
+import Hikayeler from './pages/Hikayeler';
 import ArticleDetail from './pages/ArticleDetail';
 import { Page } from './types';
 
@@ -20,11 +20,8 @@ const App: React.FC = () => {
   const validPages: Page[] = [
     'home', 
     'biz-kimiz', 
-    'basin', 
-    'basin-bultenleri', 
-    'etkinlikler', 
-    'galeri', 
-    'kalem', 
+    'haberler', 
+    'hikayeler', 
     'raporlar', 
     'iletisim', 
     'programs'
@@ -81,12 +78,9 @@ const App: React.FC = () => {
       case 'raporlar': return <Resources />;
       case 'iletisim': return <Contact />;
       case 'programs': return <Programs />;
-      case 'kalem': return <KadininKalemi />;
-      case 'basin-bultenleri':
-      case 'etkinlikler':
-      case 'galeri':
-      case 'basin':
-        return <BasinKulturSanat currentPage={currentPage} />;
+      case 'hikayeler': return <Hikayeler />;
+      case 'haberler':
+        return <Haberler currentPage={currentPage} />;
       default: return <Home setPage={navigate} />;
     }
   };
