@@ -44,9 +44,9 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ slug }) => {
     : 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200&auto=format&fit=crop';
 
   return (
-    <article className="min-h-screen bg-white pt-24 pb-20 animate-in fade-in duration-700">
+    <article className="-mt-20 min-h-screen bg-white pb-20 animate-in fade-in duration-700">
       {/* Hero Image */}
-      <div className="h-[40vh] md:h-[50vh] w-full relative overflow-hidden">
+      <div className="h-[60vh] md:h-[70vh] w-full relative overflow-hidden">
         <img 
           src={imageUrl} 
           alt={article.title} 
