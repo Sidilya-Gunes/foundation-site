@@ -444,7 +444,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   attributes: {
     author: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
-      ['Basin', 'Kultur', 'Sanat', 'KadininKalemi']
+      ['Haberler', 'Duyurular', 'Makaleler', 'Hikayeler']
     >;
     content: Schema.Attribute.Blocks;
     coverImage: Schema.Attribute.Media<
