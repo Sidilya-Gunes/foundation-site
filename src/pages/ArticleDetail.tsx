@@ -34,7 +34,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ slug }) => {
   if (!article) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-gray-500">
-        Yazı bulunamadı.
+        Article not found.
       </div>
     );
   }
@@ -55,13 +55,13 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ slug }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 text-white max-w-7xl mx-auto">
           <span className="inline-block px-3 py-1 bg-brand-yellow-400 text-brand-purple-900 text-xs font-bold uppercase tracking-widest rounded mb-4">
-             {article.category}
+             {article.category === 'Haberler' ? 'News' : article.category === 'Duyurular' ? 'Announcements' : article.category === 'Makaleler' ? 'Articles' : article.category === 'Hikayeler' ? 'Stories' : article.category === 'Basin' ? 'Press' : article.category}
           </span>
           <h1 className="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">
             {article.title}
           </h1>
           <div className="flex items-center space-x-4 text-sm font-medium text-white/80">
-            <span>{article.publishedDate || 'Tarih yok'}</span>
+            <span>{article.publishedDate || 'No date'}</span>
             <span className="w-1 h-1 bg-white rounded-full"></span>
             <span>{article.author || 'TJA'}</span>
           </div>
