@@ -340,7 +340,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent border-b-2 border-white/20 text-white text-4xl md:text-5xl font-serif font-bold placeholder:text-white/20 focus:border-brand-yellow-400 outline-none pb-4 transition-all"
-                placeholder="Ne aramıştınız?"
+                placeholder="What are you looking for?"
               />
               {isSearching && (
                 <div className="absolute right-0 bottom-4 animate-spin">
@@ -372,7 +372,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
               {searchResults.length > 0 ? (
                 <>
                   <p className="text-white/50 uppercase tracking-widest text-xs font-bold mb-4">
-                    Sonuçlar
+                    Results
                   </p>
                   {searchResults.map((result) => (
                     <div
@@ -411,8 +411,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                           className={`text-[10px] font-bold uppercase tracking-widest block mb-1 ${result.type === "report" ? "text-brand-green-400" : "text-brand-yellow-400"}`}
                         >
                           {result.type === "report"
-                            ? "Rapor & Arşiv"
-                            : `${result.category || "İçerik"}`}
+                            ? "Report & Archive"
+                            : `${result.category || "Content"}`}
                         </span>
                         <h4 className="text-white font-bold text-xl leading-tight group-hover:text-brand-yellow-400 transition-colors">
                           {result.title}
@@ -438,7 +438,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
                 searchQuery.length > 2 &&
                 !isSearching && (
                   <div className="text-center text-white/30 py-10">
-                    <p className="text-xl font-light">Sonuç bulunamadı.</p>
+                    <p className="text-xl font-light">No results found.</p>
                   </div>
                 )
               )}

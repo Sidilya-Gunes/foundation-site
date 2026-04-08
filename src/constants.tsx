@@ -3,11 +3,11 @@ import React from 'react';
 import { NavLink } from './types';
 
 export const NAV_LINKS: NavLink[] = [
-  { id: 'biz-kimiz', label: 'Hakkımızda' },
-  { id: 'haberler', label: 'Haberler & Duyurular' },
-  { id: 'hikayeler', label: 'Hikayeler & Makaleler' },
-  { id: 'raporlar', label: 'Raporlar' },
-  { id: 'iletisim', label: 'İletişim' },
+  { id: 'biz-kimiz', label: 'About Us' },
+  { id: 'haberler', label: 'News & Announcements' },
+  { id: 'hikayeler', label: 'Stories & Articles' },
+  { id: 'raporlar', label: 'Reports' },
+  { id: 'iletisim', label: 'Contact' },
 ];
 
 export const ICONS = {

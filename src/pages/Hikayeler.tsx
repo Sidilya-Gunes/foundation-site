@@ -34,7 +34,7 @@ const Hikayeler: React.FC = () => {
             content: item.content,
             category: item.category,
             coverImage: item.coverImage,
-            publishedDate: item.publishedDate ? new Date(item.publishedDate).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Tarih Yok'
+            publishedDate: item.publishedDate ? new Date(item.publishedDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) : 'No Date'
           }));
         setArticles(filtered);
       } catch (error) {
@@ -61,7 +61,7 @@ const Hikayeler: React.FC = () => {
   if (!featured) {
     return (
       <div className="min-h-screen bg-brand-neutral-bg py-20 text-center">
-         <h1 className="text-4xl text-gray-400 font-serif">Henüz yazı eklenmemiş.</h1>
+         <h1 className="text-4xl text-gray-400 font-serif">No articles added yet.</h1>
       </div>
     );
   }
@@ -77,9 +77,9 @@ const Hikayeler: React.FC = () => {
         
         {/* Page Header */}
         <div className="text-center mb-20 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-purple-900 italic tracking-tight">Bizim Hikayelerimiz</h1>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold text-brand-purple-900 italic tracking-tight">Our Stories</h1>
           <p className="text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Gönüllülerimizin hikayeleri, ilham veren yazılar ve mücadelemiz üzerine samimi bir köşe. Her kelime bir güç, her hikaye bir dayanışma.
+            A sincere corner on our volunteers' stories, inspiring articles, and our struggle. Every word is power, every story is solidarity.
           </p>
           <div className="w-24 h-1 bg-brand-yellow-400 mx-auto mt-8"></div>
         </div>
@@ -96,7 +96,7 @@ const Hikayeler: React.FC = () => {
             </div>
             <div className="lg:w-2/5 p-10 lg:p-16 flex flex-col justify-center">
               <div className="flex items-center space-x-2 text-brand-green-500 font-bold text-xs uppercase tracking-widest mb-6">
-                <span>Öne Çıkan Hikaye</span>
+                <span>Featured Story</span>
                 <span className="w-1 h-1 bg-brand-green-500 rounded-full"></span>
                 <span>{featured.publishedDate}</span>
               </div>
@@ -110,8 +110,8 @@ const Hikayeler: React.FC = () => {
               
               <div className="flex items-center space-x-4 border-t border-gray-100 pt-8 mt-auto">
                 <div>
-                  <h4 className="font-bold text-brand-purple-900">OpenHeart Gönüllüsü</h4>
-                  <p className="text-xs text-gray-400">Yazar</p>
+                  <h4 className="font-bold text-brand-purple-900">OpenHeart Volunteer</h4>
+                  <p className="text-xs text-gray-400">Author</p>
                 </div>
                 <button 
                   onClick={() => navigateToArticle(featured.slug)}
@@ -129,7 +129,7 @@ const Hikayeler: React.FC = () => {
         {/* Stories Grid */}
         <section className="space-y-16">
           <div className="flex items-center justify-between">
-            <h3 className="text-3xl font-serif font-bold text-brand-purple-900">Son Hikayeler</h3>
+            <h3 className="text-3xl font-serif font-bold text-brand-purple-900">Recent Stories</h3>
             <div className="h-px flex-1 bg-brand-purple-100 mx-8 hidden md:block"></div>
           </div>
 
@@ -149,7 +149,7 @@ const Hikayeler: React.FC = () => {
                   <div className="flex items-center space-x-3 text-xs text-gray-400 font-medium">
                     <span>{story.publishedDate}</span>
                     <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                    <span className="text-brand-purple-500">Gönüllü Yazar</span>
+                    <span className="text-brand-purple-500">Volunteer Author</span>
                   </div>
                   
                   <h4 className="text-2xl font-serif font-bold text-brand-purple-900 group-hover:text-brand-purple-600 transition-colors leading-tight">
@@ -157,7 +157,7 @@ const Hikayeler: React.FC = () => {
                   </h4>
                   
                   <button className="text-brand-green-500 font-bold text-sm flex items-center pt-2 group-hover:translate-x-1 transition-transform">
-                    Okumaya Başla
+                    Start Reading
                     <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -175,12 +175,12 @@ const Hikayeler: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-green-500 rounded-full blur-[100px] opacity-10 translate-y-1/2 -translate-x-1/2"></div>
             
             <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">Sizin Sesiniz, Bizim Gücümüz.</h2>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">Your Voice, Our Power.</h2>
               <p className="text-lg text-brand-purple-100/80 font-light leading-relaxed">
-                Hikayenizi anlatmak, kaleminizi dayanışma için kullanmak ister misiniz? Köşemizde sizin yazılarınıza da yer vermek için sabırsızlanıyoruz.
+                Would you like to tell your story and use your pen for solidarity? We look forward to featuring your articles in our corner.
               </p>
               <button onClick={() => window.location.hash='iletisim'} className="bg-brand-yellow-400 text-brand-purple-900 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl hover:-translate-y-1 active:scale-95">
-                Yazınızı Gönderin
+                Submit Your Article
               </button>
             </div>
           </div>

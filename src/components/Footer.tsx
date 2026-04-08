@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
               <span className="text-3xl font-serif font-bold tracking-tight">OpenHeart</span>
             </div>
             <p className="text-brand-purple-100/70 font-light leading-relaxed">
-              Toplumsal dayanışma, eğitim ve sürdürülebilir kalkınma projeleriyle geleceği inşa ediyoruz. Şeffaf, adil ve kapsayıcı bir dünya için çalışıyoruz.
+              Building the future through social solidarity, education, and sustainable development projects. Working towards a transparent, fair, and inclusive world.
             </p>
             <div className="flex space-x-3">
               {['FB', 'TW', 'IG', 'LI'].map((social) => (
@@ -31,21 +31,21 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-8 border-b border-white/10 pb-4">Kurumsal</h4>
+            <h4 className="text-lg font-bold mb-8 border-b border-white/10 pb-4">Organization</h4>
             <ul className="space-y-4 text-brand-purple-100/70">
-              <li><button onClick={() => setPage('home')} className="hover:text-brand-yellow-400 transition-colors">Ana Sayfa</button></li>
-              <li><button onClick={() => setPage('biz-kimiz')} className="hover:text-brand-yellow-400 transition-colors">Hakkımızda</button></li>
-              <li><button onClick={() => setPage('programs')} className="hover:text-brand-yellow-400 transition-colors">Programlarımız</button></li>
-              <li><button onClick={() => setPage('raporlar')} className="hover:text-brand-yellow-400 transition-colors">Raporlar & Yayınlar</button></li>
+              <li><button onClick={() => setPage('home')} className="hover:text-brand-yellow-400 transition-colors">Home</button></li>
+              <li><button onClick={() => setPage('biz-kimiz')} className="hover:text-brand-yellow-400 transition-colors">About Us</button></li>
+              <li><button onClick={() => setPage('programs')} className="hover:text-brand-yellow-400 transition-colors">Our Programs</button></li>
+              <li><button onClick={() => setPage('raporlar')} className="hover:text-brand-yellow-400 transition-colors">Reports & Publications</button></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-8 border-b border-white/10 pb-4">İletişim</h4>
+            <h4 className="text-lg font-bold mb-8 border-b border-white/10 pb-4">Contact</h4>
             <ul className="space-y-5 text-brand-purple-100/70 text-sm">
               <li className="flex items-start space-x-3">
                 <svg className="w-5 h-5 mt-0.5 text-brand-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
-                <span>Merkez Ofis<br />İstanbul, Türkiye</span>
+                <span>Headquarters<br />Istanbul, Turkey</span>
               </li>
               <li className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-brand-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 02 2z" /></svg>
@@ -60,11 +60,11 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
         </div>
 
         <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center text-brand-purple-100/40 text-[10px] uppercase tracking-widest font-bold">
-          <p>© 2024 OpenHeart Foundation. Tüm hakları saklıdır.</p>
+          <p>© 2024 OpenHeart Foundation. All rights reserved.</p>
           <div className="mt-6 md:mt-0 space-x-8">
-            <a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a>
-            <a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a>
-            <a href="#" className="hover:text-white transition-colors">Çerezler</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+            <a href="#" className="hover:text-white transition-colors">Cookies</a>
           </div>
         </div>
       </div>

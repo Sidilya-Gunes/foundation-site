@@ -1,28 +1,26 @@
-
 import React from 'react';
 
 const About: React.FC = () => {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-700">
-      {/* Narrative Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-2 text-brand-purple-500 font-bold text-xs uppercase tracking-widest">
                 <span className="w-8 h-px bg-brand-purple-500"></span>
-                <span>Hikayemiz</span>
+                <span>Our Story</span>
               </div>
-              <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 leading-tight">Mücadeleyle Geçen Yıllar</h1>
+              <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 leading-tight">Years of Struggle & Dedication</h1>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-light">
                 <p>
-                  2015 yılında bir grup gönüllü ve hayırsever tarafından temelleri atılan OpenHeart Foundation, basit ama derin bir gerçeğin fark edilmesiyle doğdu: Dayanışma, değişim için en güçlü aracımızdır.
+                  Founded in 2015 by a group of volunteers and philanthropists, OpenHeart Foundation was born from a simple yet profound realization: Solidarity is our most powerful tool for change.
                 </p>
                 <p>
-                  Küçük bir topluluk girişimi olarak başlayan yolculuğumuz, bugün binlerce kişiye ulaşan bir umut ışığına dönüştü. Dezavantajlı gruplar için eşit fırsatlar yaratmak ve toplumsal adaleti savunmak için çalışıyoruz.
+                  What started as a small community initiative has turned into a beacon of hope reaching thousands. We work to create equal opportunities for disadvantaged groups and advocate for social justice.
                 </p>
                 <p>
-                  Misyonumuz sadece yardımlaşmak değil, kalıcı çözümler üretmektir. Eğitim, sağlık ve savunuculuk projelerimizle, daha adil bir dünya için köprüler kuruyoruz.
+                  Our mission is not just providing aid, but creating long-lasting solutions. Through our education, healthcare, and advocacy projects, we are building bridges to a fairer world.
                 </p>
               </div>
             </div>
@@ -31,7 +29,7 @@ const About: React.FC = () => {
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-green-500 rounded-2xl z-0 opacity-10"></div>
               <img 
                 src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop" 
-                alt="Dayanışma Grubu" 
+                alt="Solidarity Group" 
                 className="relative z-10 w-full h-[550px] object-cover rounded-2xl shadow-2xl"
               />
             </div>
@@ -39,22 +37,21 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Values Section */}
       <section className="py-32 bg-brand-neutral-bg relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-purple-100/30 rounded-full blur-[120px] -translate-y-1/2"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-purple-900">Temel Değerlerimiz</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Bizi biz yapan ve her adımda rehber edindiğimiz ilkelerimiz.</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-purple-900">Our Core Values</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">The principles that define us and guide every step we take.</p>
             <div className="w-20 h-1.5 bg-brand-green-500 mx-auto rounded-full"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { title: 'Kapsayıcılık', desc: 'Dil, din, ırk ve cinsiyet ayrımı gözetmeksizin, toplumun her kesimi için eşit ve adil bir yaşamı savunuyoruz.', icon: '🌈' },
-              { title: 'Şeffaflık', desc: 'Bağışçılarımıza ve gönüllülerimize karşı her zaman hesap verebilir, açık ve dürüst bir yönetim anlayışını benimsiyoruz.', icon: '🛡️' },
-              { title: 'Sürdürülebilirlik', desc: 'Geçici çözümler değil, kalıcı etkiler yaratan projelerle toplumsal kalkınmaya destek oluyoruz.', icon: '🌱' }
+              { title: 'Inclusivity', desc: 'We advocate for an equal and fair life for all sections of society, regardless of language, religion, race, or gender.', icon: '🌈' },
+              { title: 'Transparency', desc: 'We adopt an open, honest, and accountable management approach toward our donors and volunteers.', icon: '🛡️' },
+              { title: 'Sustainability', desc: 'We support social development with projects that create lasting impacts rather than temporary fixes.', icon: '🌱' }
             ].map((value, idx) => (
               <div key={idx} className="group bg-white p-12 rounded-3xl shadow-sm border border-brand-purple-50 hover:shadow-2xl hover:shadow-brand-purple-900/5 transition-all duration-500 hover:-translate-y-2">
                 <div className="text-5xl mb-8 group-hover:scale-110 transition-transform inline-block">{value.icon}</div>
@@ -66,20 +63,19 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Leadership */}
       <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex flex-col md:flex-row justify-between items-center mb-20 gap-8">
-             <h2 className="text-4xl font-serif font-bold text-brand-purple-900 text-center md:text-left">Yönetim ve Ekibimiz</h2>
-             <p className="text-gray-500 max-w-md text-center md:text-right italic">"Birlikte çalışarak, dünyayı değiştirecek güce sahibiz."</p>
+             <h2 className="text-4xl font-serif font-bold text-brand-purple-900 text-center md:text-left">Leadership & Our Team</h2>
+             <p className="text-gray-500 max-w-md text-center md:text-right italic">"Working together, we have the power to change the world."</p>
            </div>
            
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
              {[
-               { name: "Ayşe Yılmaz", role: "Kurucu & Başkan" },
-               { name: "Mehmet Demir", role: "Genel Sekreter" },
-               { name: "Zeynep Kaya", role: "Proje Koordinatörü" },
-               { name: "Can Yıldız", role: "İletişim Direktörü" }
+               { name: "Ayşe Yılmaz", role: "Founder & President" },
+               { name: "Mehmet Demir", role: "General Secretary" },
+               { name: "Zeynep Kaya", role: "Project Coordinator" },
+               { name: "Can Yıldız", role: "Communications Director" }
              ].map((member, i) => (
                <div key={i} className="text-center group">
                  <div className="relative w-48 h-48 mx-auto mb-8">
@@ -96,15 +92,14 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Impact Numbers */}
       <section className="py-24 bg-brand-purple-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
-              { label: 'Ulaşılan Kişi', value: '50.000+' },
-              { label: 'Aktif Gönüllü', value: '1.200+' },
-              { label: 'Tamamlanan Proje', value: '85+' },
-              { label: 'Desteklenen İl', value: '12' }
+              { label: 'People Reached', value: '50.000+' },
+              { label: 'Active Volunteers', value: '1.200+' },
+              { label: 'Completed Projects', value: '85+' },
+              { label: 'Supported Regions', value: '12' }
             ].map((stat, i) => (
               <div key={i} className="space-y-2">
                 <div className="text-4xl md:text-5xl font-serif font-bold text-brand-yellow-400">{stat.value}</div>

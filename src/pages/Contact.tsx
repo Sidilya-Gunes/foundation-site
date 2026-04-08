@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { sendMessage } from '../services/api';
 
 const Contact: React.FC = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', subject: 'Destek Talebi', message: '' });
+  const [formState, setFormState] = useState({ name: '', email: '', subject: 'Support Request', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -18,10 +18,10 @@ const Contact: React.FC = () => {
         body: formState.message
       });
       setSubmitted(true);
-      setFormState({ name: '', email: '', subject: 'Destek Talebi', message: '' });
+      setFormState({ name: '', email: '', subject: 'Support Request', message: '' });
     } catch (error: any) {
       console.error(error);
-      alert(`Hata: ${error.message || 'Mesaj gönderilemedi. Lütfen tekrar deneyiniz.'}`);
+      alert(`Error: ${error.message || 'Message could not be sent. Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -42,13 +42,13 @@ const Contact: React.FC = () => {
           {/* Text & Contact Info Section */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <span className="text-brand-purple-500 font-bold uppercase tracking-widest text-sm">İletişim & Dayanışma</span>
+              <span className="text-brand-purple-500 font-bold uppercase tracking-widest text-sm">Contact & Solidarity</span>
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 leading-tight">
-                Yalnız Değilsiniz, <br />
-                <span className="text-brand-green-500 italic">Biz Buradayız.</span>
+                You Are Not Alone, <br />
+                <span className="text-brand-green-500 italic">We Are Here.</span>
               </h1>
               <p className="text-xl text-gray-600 font-light leading-relaxed max-w-lg">
-                Her türlü sorunuz, destek talebiniz veya iş birliği öneriniz için bize ulaşabilirsiniz. Paylaştığınız her bilgi bizimle güvendedir ve gizlilik ilkelerimiz çerçevesinde değerlendirilir.
+                You can reach out to us for any questions, support requests, or collaboration proposals. Every piece of information you share is safe with us and evaluated within our privacy principles.
               </p>
             </div>
 
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h4 className="font-bold text-brand-purple-900 mb-2">E-Posta</h4>
+                <h4 className="font-bold text-brand-purple-900 mb-2">Email</h4>
                 <p className="text-sm text-gray-500">info@openheart.org</p>
                 <p className="text-sm text-gray-500">destek@openheart.org</p>
               </div>
@@ -72,15 +72,15 @@ const Contact: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h4 className="font-bold text-brand-purple-900 mb-2">Merkez Ofis</h4>
-                <p className="text-sm text-gray-500">Şişli, İstanbul</p>
-                <p className="text-sm text-gray-500">Büyükdere Cad. No: 123</p>
+                <h4 className="font-bold text-brand-purple-900 mb-2">Headquarters</h4>
+                <p className="text-sm text-gray-500">Sisli, Istanbul</p>
+                <p className="text-sm text-gray-500">Buyukdere Ave. No: 123</p>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="space-y-4">
-              <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Sosyal Medyada Biz</p>
+              <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">We are on Social Media</p>
               <div className="flex space-x-4">
                 {['Instagram', 'Twitter', 'Facebook', 'LinkedIn'].map((platform) => (
                   <a key={platform} href="#" className="px-5 py-2 rounded-full border border-brand-purple-100 text-sm font-medium text-brand-purple-700 hover:bg-brand-purple-500 hover:text-white transition-all">
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
           <div className="bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-2xl shadow-brand-purple-900/5 border border-brand-purple-50 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow-400/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
             
-            <h3 className="text-3xl font-serif font-bold text-brand-purple-900 mb-8">Mesaj Gönderin</h3>
+            <h3 className="text-3xl font-serif font-bold text-brand-purple-900 mb-8">Send a Message</h3>
             
               {submitted ? (
                 <div className="py-20 text-center space-y-4 animate-in zoom-in duration-500">
@@ -104,59 +104,59 @@ const Contact: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h4 className="text-2xl font-bold text-brand-purple-900">Mesajınız Alındı</h4>
-                  <p className="text-gray-500">En kısa sürede size geri dönüş yapacağız. Dayanışma ile!</p>
-                  <button onClick={() => setSubmitted(false)} className="text-brand-purple-600 font-bold hover:underline mt-4">Yeni Mesaj Gönder</button>
+                  <h4 className="text-2xl font-bold text-brand-purple-900">Message Received</h4>
+                  <p className="text-gray-500">We will get back to you as soon as possible. In solidarity!</p>
+                  <button onClick={() => setSubmitted(false)} className="text-brand-purple-600 font-bold hover:underline mt-4">Send New Message</button>
                 </div>
               ) : (
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Ad Soyad</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Full Name</label>
                     <input 
                       required
                       type="text" 
                       value={formState.name}
                       onChange={(e) => setFormState({...formState, name: e.target.value})}
                       className="w-full bg-brand-neutral-bg border-2 border-transparent focus:border-brand-purple-200 focus:bg-white rounded-xl px-6 py-4 outline-none transition-all placeholder:text-gray-300" 
-                      placeholder="Adınız Soyadınız" 
+                      placeholder="Your Full Name" 
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">E-Posta Adresi</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Email Address</label>
                     <input 
                       required
                       type="email" 
                       value={formState.email}
                       onChange={(e) => setFormState({...formState, email: e.target.value})}
                       className="w-full bg-brand-neutral-bg border-2 border-transparent focus:border-brand-purple-200 focus:bg-white rounded-xl px-6 py-4 outline-none transition-all placeholder:text-gray-300" 
-                      placeholder="ornek@email.com" 
+                      placeholder="example@email.com" 
                     />
                   </div>
   
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Konu</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Subject</label>
                     <select 
                       value={formState.subject}
                       onChange={(e) => setFormState({...formState, subject: e.target.value})}
                       className="w-full bg-brand-neutral-bg border-2 border-transparent focus:border-brand-purple-200 focus:bg-white rounded-xl px-6 py-4 outline-none transition-all appearance-none cursor-pointer"
                     >
-                      <option>Destek Talebi</option>
-                      <option>Gönüllülük Hakkında</option>
-                      <option>Proje Ortaklığı</option>
-                      <option>Genel Sorular</option>
+                      <option>Support Request</option>
+                      <option>About Volunteering</option>
+                      <option>Project Partnership</option>
+                      <option>General Inquiries</option>
                     </select>
                   </div>
   
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Mesajınız</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-2">Your Message</label>
                     <textarea 
                       required
                       rows={5} 
                       value={formState.message}
                       onChange={(e) => setFormState({...formState, message: e.target.value})}
                       className="w-full bg-brand-neutral-bg border-2 border-transparent focus:border-brand-purple-200 focus:bg-white rounded-xl px-6 py-4 outline-none transition-all placeholder:text-gray-300 resize-none" 
-                      placeholder="Size nasıl yardımcı olabiliriz?"
+                      placeholder="How can we help you?"
                     ></textarea>
                   </div>
   
@@ -167,10 +167,10 @@ const Contact: React.FC = () => {
                   >
                     {isSubmitting ? (
                        <div className="h-6 w-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    ) : 'Gönder'}
+                    ) : 'Send'}
                   </button>
                   <p className="text-[10px] text-center text-gray-400 italic">
-                    * Verileriniz KVKK kapsamında korunmakta ve üçüncü şahıslarla paylaşılmamaktadır.
+                    * Your data is protected strictly under privacy laws and is not shared with third parties.
                   </p>
                 </form>
               )}
@@ -181,8 +181,8 @@ const Contact: React.FC = () => {
         <div className="mt-32 bg-brand-yellow-400 rounded-3xl p-10 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-xl">
            <div className="absolute top-0 left-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2"></div>
            <div className="space-y-2 text-center md:text-left relative z-10">
-             <h2 className="text-3xl font-serif font-bold text-brand-purple-900">Bağışçı Hattı</h2>
-             <p className="text-brand-purple-900/70 font-medium">Bize ulaşın, dayanışmaya güç katın.</p>
+             <h2 className="text-3xl font-serif font-bold text-brand-purple-900">Donor Hotline</h2>
+             <p className="text-brand-purple-900/70 font-medium">Contact us and strengthen solidarity.</p>
            </div>
            <div className="flex items-center space-x-6 relative z-10">
              <div className="text-4xl lg:text-5xl font-serif font-bold text-brand-purple-900">+90 (212) 555 0000</div>

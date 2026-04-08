@@ -15,8 +15,8 @@ interface Report {
 
 const Resources: React.FC = () => {
   const [reports, setReports] = useState<Report[]>([]);
-  const [selectedYear, setSelectedYear] = useState<string>('Hepsi');
-  const [years, setYears] = useState<string[]>(['Hepsi']);
+  const [selectedYear, setSelectedYear] = useState<string>('All');
+  const [years, setYears] = useState<string[]>(['All']);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Resources: React.FC = () => {
         
         // Extract unique years
         const uniqueYears = Array.from(new Set(formattedReports.map(r => r.year))).sort().reverse();
-        setYears(['Hepsi', ...uniqueYears]);
+        setYears(['All', ...uniqueYears]);
 
       } catch (error) {
         console.error("Failed to load reports", error);
@@ -53,7 +53,7 @@ const Resources: React.FC = () => {
     fetchReports();
   }, []);
 
-  const filteredReports = selectedYear === 'Hepsi' 
+  const filteredReports = selectedYear === 'All' 
     ? reports 
     : reports.filter(r => r.year === selectedYear);
 
@@ -75,20 +75,20 @@ const Resources: React.FC = () => {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span>Kurumsal Arşiv</span>
+            <span>Corporate Archive</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 mb-8 leading-tight">
-            Raporlarımız ve Araştırmalar
+            Our Reports and Research
           </h1>
           <p className="text-xl text-gray-600 font-light leading-relaxed">
-            Veriye dayalı savunuculuk, toplumsal dönüşümün temelidir. Sahadan topladığımız veriler ve uzman görüşleriyle hazırladığımız tüm yayınlarımıza buradan ulaşabilirsiniz.
+            Data-driven advocacy is the foundation of social transformation. You can access all our publications prepared with field data and expert opinions here.
           </p>
         </div>
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-gray-100 pb-8 gap-6">
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-bold text-gray-400 uppercase tracking-tighter">Yıla Göre Filtrele:</span>
+            <span className="text-sm font-bold text-gray-400 uppercase tracking-tighter">Filter by Year:</span>
             <div className="flex bg-brand-neutral-bg p-1 rounded-xl">
               {years.map(year => (
                 <button
@@ -106,7 +106,7 @@ const Resources: React.FC = () => {
             </div>
           </div>
           <div className="text-sm text-gray-400 font-medium">
-            Toplam <span className="text-brand-purple-900 font-bold">{filteredReports.length}</span> yayın bulundu.
+            Total <span className="text-brand-purple-900 font-bold">{filteredReports.length}</span> publications found.
           </div>
         </div>
 
@@ -150,7 +150,7 @@ const Resources: React.FC = () => {
                       {report.pages && (
                         <span className="flex items-center">
                           <svg className="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-                          {report.pages} Sayfa
+                          {report.pages} Pages
                         </span>
                       )}
                       <span className="flex items-center">
@@ -165,7 +165,7 @@ const Resources: React.FC = () => {
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 bg-brand-purple-100 hover:bg-brand-purple-200 text-brand-purple-900 px-5 py-2.5 rounded-xl text-xs font-bold transition-all"
                     >
-                      <span>İncele</span>
+                      <span>View</span>
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                     </a>
                   </div>
@@ -174,7 +174,7 @@ const Resources: React.FC = () => {
             ))
           ) : (
              <div className="col-span-full text-center py-20 text-gray-400 font-light">
-                Henüz rapor eklenmemiş.
+                No reports added yet.
              </div>
           )}
         </div>
@@ -184,16 +184,16 @@ const Resources: React.FC = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow-400 rounded-full blur-[100px] opacity-10"></div>
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="max-w-xl text-center lg:text-left space-y-6">
-              <h2 className="text-4xl font-serif font-bold">Veri Talebi ve İş Birliği</h2>
+              <h2 className="text-4xl font-serif font-bold">Data Request and Collaboration</h2>
               <p className="text-lg text-brand-purple-100 font-light">
-                Akademik çalışmalarınız veya projeleriniz için ham verilere mi ihtiyacınız var? Araştırma ekibimizle iletişime geçerek detaylı veri talebinde bulunabilirsiniz.
+                Do you need raw data for your academic studies or projects? You can request detailed data by contacting our research team.
               </p>
             </div>
             <button 
               onClick={() => window.location.hash = 'iletisim'}
               className="bg-brand-yellow-400 text-brand-purple-900 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl whitespace-nowrap"
             >
-              İletişime Geçin
+              Contact Us
             </button>
           </div>
         </div>

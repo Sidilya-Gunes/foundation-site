@@ -97,13 +97,13 @@ const Haberler: React.FC<HaberlerProps> = () => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center space-x-2 text-brand-purple-500 font-bold text-xs uppercase tracking-widest">
             <span className="w-8 h-px bg-brand-purple-500"></span>
-            <span>Haberler & Kültür</span>
+            <span>News & Culture</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-brand-purple-900 leading-tight">
-            Haberler & İçerikler
+            News & Content
           </h1>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
-            Vakfımızdan en son gelişmeleri, güncel duyuruları ve ilham verici makaleleri buradan takip edebilirsiniz.
+            You can follow the latest developments, current announcements, and inspiring articles from our foundation here.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
                   : 'bg-white text-gray-500 border border-brand-purple-50 hover:border-brand-purple-200 hover:text-brand-purple-900 shadow-sm'
               }`}
             >
-              {tab}
+              {tab === 'Tümü' ? 'All' : tab === 'Haberler' ? 'News' : tab === 'Duyurular' ? 'Announcements' : tab === 'Basin' ? 'Press' : tab}
             </button>
           ))}
         </div>
@@ -142,7 +142,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
                   />
                   <div className="absolute top-6 left-6">
                     <span className="bg-brand-purple-900/90 backdrop-blur-md text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
-                      {article.category}
+                      {article.category === 'Haberler' ? 'News' : article.category === 'Duyurular' ? 'Announcements' : article.category === 'Basin' ? 'Press' : article.category}
                     </span>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
                   </p>
                   <div className="pt-6 border-t border-gray-100 mt-auto">
                     <button className="text-brand-purple-900 font-bold text-xs uppercase tracking-widest flex items-center group-hover:text-brand-green-500 transition-colors">
-                      Devamını Oku
+                      Read More
                       <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </button>
                   </div>
@@ -175,7 +175,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
             ))
           ) : (
              <div className="col-span-full text-center py-20">
-                <p className="text-xl text-gray-400 font-light">Henüz bu kategoride bir içerik bulunmuyor.</p>
+                <p className="text-xl text-gray-400 font-light">No content found in this category yet.</p>
              </div>
           )}
         </div>
