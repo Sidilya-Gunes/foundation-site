@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Page } from '../types';
-import { getArticles, getReports } from '../services/api';
+import { getArticles, getReports, getHomepage } from '../services/api';
 
 interface HomeProps {
   setPage: (page: Page) => void;
@@ -29,12 +29,16 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
   const [latestNews, setLatestNews] = useState<NewsItem[]>([]);
   const [kalemArticles, setKalemArticles] = useState<NewsItem[]>([]);
   const [latestReports, setLatestReports] = useState<ReportItem[]>([]);
+  const [heroImageUrl, setHeroImageUrl] = useState<string>("https://images.unsplash.com/photo-1542810634-71277d95dcbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [articlesData, reportsData] = await Promise.all([getArticles(), getReports()]);
+        const [articlesData, reportsData, homepageData] = await Promise.all([getArticles(), getReports(), getHomepage()]);
         
+        if (homepageData && homepageData.heroImage?.url) {
+           setHeroImageUrl(`http://localhost:1337${homepageData.heroImage.url}`);
+        }
         // 1. Latest News (Haberler and Duyurular)
         const newsItems = articlesData
           .filter((item: any) => item.category !== 'Makaleler' && item.category !== 'Hikayeler') 
@@ -143,7 +147,7 @@ const Home: React.FC<HomeProps> = ({ setPage }) => {
             <div className="relative animate-in slide-in-from-right duration-1000 delay-200 hidden lg:block">
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
                  <img 
-                   src="https://images.unsplash.com/photo-1542810634-71277d95dcbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                   src={heroImageUrl} 
                    alt="Community Support" 
                    className="w-full object-cover h-[600px] scale-105 hover:scale-100 transition-transform duration-1000"
                  />

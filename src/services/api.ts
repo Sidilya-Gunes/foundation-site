@@ -66,6 +66,21 @@ export const searchContent = async (query: string) => {
   ];
 };
 
+export const getHomepage = async () => {
+  try {
+    const response = await fetch(`${API_URL}/homepage?populate=heroImage`);
+    if (!response.ok) {
+      if (response.status === 404 || response.status === 403) return null; // Expected if not setup or forbidden
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Error fetching homepage:', error);
+    return null;
+  }
+};
+
 export const sendMessage = async (messageData: { name: string; email: string; subject: string; body: string }) => {
   try {
     const response = await fetch(`${API_URL}/messages`, {
