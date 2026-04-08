@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Page } from '../types';
 import { getArticles } from '../services/api';
 
-type Category = 'Tümü' | 'Haberler' | 'Duyurular' | 'Makaleler' | 'Hikayeler';
+type Category = 'Tümü' | 'Haberler' | 'Duyurular' | 'Basin';
 
 interface Article {
   id: string;
@@ -32,11 +32,13 @@ const Haberler: React.FC<HaberlerProps> = () => {
       try {
         const strapiData = await getArticles();
         const formattedArticles: Article[] = strapiData.map((item: any) => {
+           // Filter out Makaleler and Hikayeler as they belong to Hikayeler.tsx
+           if (item.category === 'Makaleler' || item.category === 'Hikayeler') return null;
+
            // Map Strapi categories to Frontend categories
            let category: any = 'Haberler'; // Default
            if (item.category === 'Duyurular') category = 'Duyurular';
-           if (item.category === 'Makaleler') category = 'Makaleler';
-           if (item.category === 'Hikayeler') category = 'Hikayeler';
+           if (item.category === 'Basin') category = 'Basin';
            if (item.category === 'Haberler') category = 'Haberler';
 
            // Handle Image URL
@@ -57,7 +59,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
              slug: item.slug,
            };
         });
-        setArticles(formattedArticles);
+        setArticles(formattedArticles.filter((a): a is Article => a !== null));
       } catch (error) {
         console.error("Failed to load articles", error);
       } finally {
@@ -73,7 +75,7 @@ const Haberler: React.FC<HaberlerProps> = () => {
     return articles.filter(art => art.category === activeTab);
   }, [activeTab, articles]);
 
-  const categories: Category[] = ['Tümü', 'Haberler', 'Duyurular', 'Makaleler', 'Hikayeler'];
+  const categories: Category[] = ['Tümü', 'Haberler', 'Duyurular', 'Basin'];
 
   const navigateToArticle = (slug: string) => {
     window.location.hash = `article/${slug}`;
