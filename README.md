@@ -3,7 +3,7 @@
 A modern, full-stack open-source web template designed for NGOs, charities, and non-profit organizations. It features a beautiful React frontend and a CMS (Strapi) backend for easy content management.
 
 ![Preview](preview.png)
-*(Note: Add a screenshot here after deployment)*
+
 
 ## 🚀 Features
 - **Modern UI/UX:** Clean, responsive design suitable for reputable organizations.
